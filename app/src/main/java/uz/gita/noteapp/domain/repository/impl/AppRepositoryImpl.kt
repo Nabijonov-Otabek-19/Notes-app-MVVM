@@ -1,8 +1,8 @@
 package uz.gita.noteapp.domain.repository.impl
 
 import androidx.lifecycle.LiveData
-import uz.gita.noteapppractice.data.model.NoteData
-import uz.gita.noteapppractice.data.source.local.NoteDatabase
+import uz.gita.noteapp.data.model.NoteData
+import uz.gita.noteapp.data.source.local.NoteDatabase
 import uz.gita.noteapppractice.domain.repository.AppRepository
 
 class AppRepositoryImpl private constructor(): AppRepository {

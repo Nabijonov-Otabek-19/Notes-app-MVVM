@@ -1,7 +1,7 @@
-package uz.gita.noteapppractice.data.model
+package uz.gita.noteapp.data.model
 
 import androidx.room.ColumnInfo
-import uz.gita.noteapppractice.data.source.local.entity.NoteEntity
+import uz.gita.noteapp.data.source.local.entity.NoteEntity
 import java.util.*
 
 data class NoteData(

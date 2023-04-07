@@ -1,9 +1,9 @@
-package uz.gita.noteapppractice.data.source.local.entity
+package uz.gita.noteapp.data.source.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import uz.gita.noteapppractice.data.model.NoteData
+import uz.gita.noteapp.data.model.NoteData
 import java.util.Date
 
 @Entity(tableName = "Notes")

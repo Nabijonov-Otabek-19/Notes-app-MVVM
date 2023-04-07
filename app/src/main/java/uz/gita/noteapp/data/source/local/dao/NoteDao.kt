@@ -2,8 +2,8 @@ package uz.gita.noteapppractice.data.source.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import uz.gita.noteapppractice.data.model.NoteData
-import uz.gita.noteapppractice.data.source.local.entity.NoteEntity
+import uz.gita.noteapp.data.model.NoteData
+import uz.gita.noteapp.data.source.local.entity.NoteEntity
 
 @Dao
 interface NoteDao {

@@ -1,12 +1,7 @@
 package uz.gita.noteapppractice.domain.repository
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
-import uz.gita.noteapppractice.data.model.NoteData
-import uz.gita.noteapppractice.data.source.local.entity.NoteEntity
+import uz.gita.noteapp.data.model.NoteData
 
 interface AppRepository {
 
