@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="uz.gita.noteapp.presentation.screen.home.HomeFragment"
         android:label="Notes"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_trashFragment"
             app:destination="@id/trashFragment" />
@@ -20,11 +20,11 @@
     <fragment
         android:id="@+id/trashFragment"
         android:name="uz.gita.noteapp.presentation.screen.trash.TrashFragment"
-        android:label="fragment_trash"
+        android:label="Trash bin"
         tools:layout="@layout/fragment_trash" />
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="uz.gita.noteapp.presentation.screen.add.AddNoteFragment"
-        android:label="fragment_add_note"
+        android:label="Add Note"
         tools:layout="@layout/fragment_add_note" />
 </navigation>

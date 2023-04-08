@@ -1,6 +1,8 @@
-package uz.gita.noteapppractice.data.source.local.converter
+package uz.gita.noteapp.data.source.local.converter
 
 import androidx.room.TypeConverter
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 object DateConverter {
@@ -12,5 +14,11 @@ object DateConverter {
     @TypeConverter
     fun fromTimeStampToDate(value: Long?): Date? {
         return value?.let { Date(it) }
+    }
+
+    fun getCurrentTime(): String {
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        return current.format(formatter)
     }
 }

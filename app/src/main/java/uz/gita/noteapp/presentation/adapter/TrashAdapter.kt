@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.databinding.ItemNoteBinding
 
-class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) {
+class TrashAdapter : ListAdapter<NoteData, TrashAdapter.ItemHolder>(NoteCallback) {
 
     private var deleteLongClickListener: ((NoteData) -> Unit)? = null
 

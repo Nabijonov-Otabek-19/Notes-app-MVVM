@@ -3,15 +3,15 @@ package uz.gita.noteapp.domain.repository.impl
 import androidx.lifecycle.LiveData
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.data.source.local.NoteDatabase
-import uz.gita.noteapppractice.domain.repository.AppRepository
+import uz.gita.noteapp.domain.repository.AppRepository
 
-class AppRepositoryImpl private constructor(): AppRepository {
+class AppRepositoryImpl private constructor() : AppRepository {
 
     companion object {
         private lateinit var repository: AppRepositoryImpl
 
         fun getInstance(): AppRepositoryImpl {
-            if(!(Companion::repository.isInitialized)) {
+            if (!(Companion::repository.isInitialized)) {
                 repository = AppRepositoryImpl()
             }
             return repository
@@ -42,9 +42,21 @@ class AppRepositoryImpl private constructor(): AppRepository {
 
     override fun getNotes(): LiveData<List<NoteData>> {
         return noteDao.getNotes()
-        }
+    }
 
     override fun getNotesInTrash(): LiveData<List<NoteData>> {
         return noteDao.getNotesInTrash()
+    }
+
+    override fun throwNoteToTrash(noteId: Long) {
+        noteDao.throwNoteToTrash(noteId)
+    }
+
+    override fun recoverNote(noteId: Long) {
+        noteDao.recoverNote(noteId)
+    }
+
+    override fun deleteAllNotesInTrash() {
+        noteDao.deleteAllNotesInTrash()
     }
 }

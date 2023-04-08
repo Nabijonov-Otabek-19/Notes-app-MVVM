@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import uz.gita.noteapppractice.data.source.local.converter.DateConverter
-import uz.gita.noteapppractice.data.source.local.dao.NoteDao
+import uz.gita.noteapp.data.source.local.converter.DateConverter
+import uz.gita.noteapp.data.source.local.dao.NoteDao
 import uz.gita.noteapp.data.source.local.entity.NoteEntity
 
 @Database(entities = [NoteEntity::class], version=1)

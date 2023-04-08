@@ -1,11 +1,13 @@
 package uz.gita.noteapp.presentation.screen.add
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import uz.gita.noteapp.R
+import uz.gita.noteapp.data.model.NoteData
+import uz.gita.noteapp.data.source.local.converter.DateConverter
 import uz.gita.noteapp.databinding.FragmentAddNoteBinding
 import uz.gita.noteapp.presentation.screen.add.viewmodel.AddNoteViewModel
 import uz.gita.noteapp.presentation.screen.add.viewmodel.impl.AddNoteViewModelImpl
@@ -21,8 +23,12 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
-            button.setOnClickListener {
+            btnAdd.setOnClickListener {
+                val title = edtTitle.text.toString()
+                val content = edtContent.text.toString()
+                val time = DateConverter.getCurrentTime()
 
+                viewModel.addNote(NoteData(title = title, content = content, createdAt = time))
             }
         }
     }

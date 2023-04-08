@@ -1,4 +1,4 @@
-package uz.gita.noteapppractice.domain.repository
+package uz.gita.noteapp.domain.repository
 
 import androidx.lifecycle.LiveData
 import uz.gita.noteapp.data.model.NoteData
@@ -16,4 +16,10 @@ interface AppRepository {
     fun getNotes(): LiveData<List<NoteData>>
 
     fun getNotesInTrash(): LiveData<List<NoteData>>
+
+    fun throwNoteToTrash(noteId: Long)
+
+    fun recoverNote(noteId: Long)
+
+    fun deleteAllNotesInTrash()
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import uz.gita.noteapp.databinding.ActivityMainBinding
@@ -36,10 +37,6 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.action_homeFragment_to_trashFragment)
                     true
                 }
-                R.id.addNoteScreen -> {
-                    navController.navigate(R.id.action_homeFragment_to_addNoteFragment)
-                    true
-                }
                 else -> false
             }
             binding.drawerLayout.closeDrawers()
@@ -48,10 +45,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_container)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_container)
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 }
