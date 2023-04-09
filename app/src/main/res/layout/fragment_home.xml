@@ -34,11 +34,23 @@
         android:id="@+id/recyclerHome"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear"
         app:layout_constraintVertical_weight="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtNotFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Not Found"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNoteBtn"

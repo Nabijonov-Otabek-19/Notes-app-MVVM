@@ -74,4 +74,8 @@ class AppRepositoryImpl private constructor() : AppRepository {
     override fun getSearchedNote(note: String): LiveData<List<NoteData>> {
         return noteDao.searchNote(note)
     }
+
+    override fun deleteAllNotes() {
+        noteDao.deleteAllNotes()
+    }
 }

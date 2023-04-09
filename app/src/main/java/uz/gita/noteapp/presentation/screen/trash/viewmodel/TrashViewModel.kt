@@ -9,5 +9,5 @@ interface TrashViewModel {
     val notesTrashLiveData: LiveData<List<NoteData>>
 
     fun showRecoverDialog(context: Context, noteID: Long)
-    fun deleteAllNotesInTrash()
+    fun showDeleteAllDialog(context: Context)
 }

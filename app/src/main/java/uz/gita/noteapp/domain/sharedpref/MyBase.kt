@@ -30,6 +30,12 @@ class MyBase private constructor() {
         }
     }
 
+    fun clearUserData() {
+        Login = ""
+        Password = ""
+        PinCode = ""
+    }
+
     var Login: String
         get() = pref.getString(LOGIN, "").toString()
         set(value) = editor.putString(LOGIN, value).apply()

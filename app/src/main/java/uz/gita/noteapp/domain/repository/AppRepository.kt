@@ -28,4 +28,6 @@ interface AppRepository {
     fun saveUser(login: String, password: String)
 
     fun getSearchedNote(note: String): LiveData<List<NoteData>>
+
+    fun deleteAllNotes()
 }

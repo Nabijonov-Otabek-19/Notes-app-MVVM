@@ -7,8 +7,12 @@
     <item
         android:id="@+id/trashScreen"
         android:icon="@drawable/ic_trash"
-        android:iconTint="@color/purple_500"
         android:title="Trash"
         app:showAsAction="withText" />
 
+    <item
+        android:id="@+id/logOut"
+        android:icon="@drawable/ic_logout"
+        android:title="Log out"
+        app:showAsAction="withText" />
 </menu>

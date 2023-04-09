@@ -1,7 +1,6 @@
 package uz.gita.noteapp.presentation.screen.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -39,14 +38,25 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.apply {
             searchHome.doOnTextChanged { text, start, before, count ->
                 if (text.toString().isNotBlank()) {
-                    Log.d("AAA", text.toString())
 
                     viewModel.searchNote("%${text.toString()}%").observe(viewLifecycleOwner) {
+                        if (it.isNotEmpty()) binding.txtNotFound.visibility = View.INVISIBLE
+                        else {
+                            binding.txtNotFound.visibility = View.VISIBLE
+                            binding.txtNotFound.text = "Not Found"
+                        }
+
                         adapter.submitList(it)
                         recyclerHome.adapter = adapter
                     }
                 } else {
                     viewModel.notesLiveData.observe(viewLifecycleOwner) {
+                        if (it.isNotEmpty()) binding.txtNotFound.visibility = View.INVISIBLE
+                        else {
+                            binding.txtNotFound.visibility = View.VISIBLE
+                            binding.txtNotFound.text = "There is not any Notes."
+                        }
+
                         adapter.submitList(it)
                         binding.recyclerHome.adapter = adapter
                     }
@@ -61,6 +71,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.notesLiveData.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) binding.txtNotFound.visibility = View.INVISIBLE
+            else {
+                binding.txtNotFound.visibility = View.VISIBLE
+                binding.txtNotFound.text = "There is not any Notes."
+            }
+
             adapter.submitList(it)
             binding.recyclerHome.adapter = adapter
         }
