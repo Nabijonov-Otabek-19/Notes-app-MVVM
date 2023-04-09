@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     fun showLogOutDialog() {
         val dialog = Dialog(this)
         dialog.setCancelable(false)
-        dialog.setContentView(R.layout.custom_delete_all_dialog)
+        dialog.setContentView(R.layout.custom_quit_dialog)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val btnNo: AppCompatButton = dialog.findViewById(R.id.btnNo)
