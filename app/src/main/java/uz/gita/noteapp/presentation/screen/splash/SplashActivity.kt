@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import uz.gita.noteapp.MainActivity
 import uz.gita.noteapp.databinding.ActivitySplashBinding
@@ -33,11 +32,9 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
 
             if (viewModel.isExistUser()) {
-                Toast.makeText(this, "User exist", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
 
             } else {
-                Toast.makeText(this, "User is not exist", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             }
         }, time)

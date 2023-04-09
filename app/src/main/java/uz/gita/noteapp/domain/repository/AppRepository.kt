@@ -24,4 +24,8 @@ interface AppRepository {
     fun deleteAllNotesInTrash()
 
     fun isExistUser(): Boolean
+
+    fun saveUser(login: String, password: String)
+
+    fun getSearchedNote(note: String): LiveData<List<NoteData>>
 }

@@ -10,4 +10,6 @@ interface HomeViewModel {
 
     fun showDeleteDialog(context: Context, noteID: Long)
     fun openAddNoteScreen()
+
+    fun searchNote(note: String): LiveData<List<NoteData>>
 }

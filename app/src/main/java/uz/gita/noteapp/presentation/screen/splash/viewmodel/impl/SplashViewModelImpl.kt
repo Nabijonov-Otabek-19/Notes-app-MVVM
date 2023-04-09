@@ -12,8 +12,4 @@ class SplashViewModelImpl : SplashViewModel, ViewModel() {
     override fun isExistUser(): Boolean {
         return repository.isExistUser()
     }
-
-    override fun checkPinCode() {
-
-    }
 }

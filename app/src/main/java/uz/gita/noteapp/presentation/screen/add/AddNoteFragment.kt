@@ -24,8 +24,8 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
             btnAdd.setOnClickListener {
-                val title = edtTitle.text.toString()
-                val content = edtContent.text.toString()
+                val title = edtTitle.text.toString().trim()
+                val content = edtContent.text.toString().trim()
                 val time = DateConverter.getCurrentTime()
 
                 viewModel.addNote(NoteData(title = title, content = content, createdAt = time))

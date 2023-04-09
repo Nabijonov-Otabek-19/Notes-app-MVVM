@@ -19,6 +19,7 @@ class MyBase private constructor() {
 
         fun init(context: Context) {
             pref = context.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+            editor = pref.edit()
         }
 
         fun getInstance(): MyBase {

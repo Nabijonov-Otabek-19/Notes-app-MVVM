@@ -34,4 +34,7 @@ interface NoteDao {
 
     @Query("DELETE FROM Notes WHERE on_trash = 1")
     fun deleteAllNotesInTrash()
+
+    @Query("SELECT * FROM Notes WHERE title LIKE :note")
+    fun searchNote(note: String): LiveData<List<NoteData>>
 }

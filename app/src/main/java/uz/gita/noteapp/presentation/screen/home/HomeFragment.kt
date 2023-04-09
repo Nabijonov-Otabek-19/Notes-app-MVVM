@@ -1,8 +1,10 @@
 package uz.gita.noteapp.presentation.screen.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.View
+import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -35,9 +37,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         binding.apply {
+            searchHome.doOnTextChanged { text, start, before, count ->
+                if (text.toString().isNotBlank()) {
+                    Log.d("AAA", text.toString())
+
+                    viewModel.searchNote("%${text.toString()}%").observe(viewLifecycleOwner) {
+                        adapter.submitList(it)
+                        recyclerHome.adapter = adapter
+                    }
+                } else {
+                    viewModel.notesLiveData.observe(viewLifecycleOwner) {
+                        adapter.submitList(it)
+                        binding.recyclerHome.adapter = adapter
+                    }
+                }
+            }
+
             addNoteBtn.setOnClickListener {
                 viewModel.openAddNoteScreen()
             }
+
             recyclerHome.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         }
 

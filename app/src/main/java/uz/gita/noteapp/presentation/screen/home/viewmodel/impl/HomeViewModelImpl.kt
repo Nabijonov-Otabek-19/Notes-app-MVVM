@@ -45,4 +45,8 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
     override fun openAddNoteScreen() {
         openAddNoteScreenLiveData.value = Unit
     }
+
+    override fun searchNote(note: String): LiveData<List<NoteData>> {
+        return repository.getSearchedNote(note)
+    }
 }

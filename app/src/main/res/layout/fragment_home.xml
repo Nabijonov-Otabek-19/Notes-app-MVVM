@@ -16,12 +16,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <SearchView
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/searchHome"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_margin="4dp"
             android:background="@drawable/bg_edt"
-            android:elevation="4dp" />
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="8dp"
+            android:elevation="4dp"
+            android:hint="Search Notes"
+            android:padding="8dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

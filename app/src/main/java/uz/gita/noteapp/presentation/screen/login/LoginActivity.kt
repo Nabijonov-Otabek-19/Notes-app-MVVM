@@ -2,6 +2,7 @@ package uz.gita.noteapp.presentation.screen.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import uz.gita.noteapp.MainActivity
@@ -23,11 +24,39 @@ class LoginActivity : AppCompatActivity() {
 
         binding.apply {
             btnSave.setOnClickListener {
-                val login = edtLogin.text.toString()
-                val password = edtPassword.text.toString()
-                val passConfirm = edtPassConfirm.text.toString()
+                val login = edtLogin.text.toString().trim()
+                val password = edtPassword.text.toString().trim()
+                val passConfirm = edtPassConfirm.text.toString().trim()
 
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                val isEmpty = login.isEmpty() && password.isEmpty() && passConfirm.isEmpty()
+                if (isEmpty) {
+                    Toast.makeText(this@LoginActivity, "Fill in completely", Toast.LENGTH_SHORT)
+                        .show()
+
+                } else if (!isEmpty) {
+                    if (login.length < 3) {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Login must be more than 3 letters", Toast.LENGTH_SHORT
+                        ).show()
+
+                    } else if (password.length < 4) {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Password must be more than 4 letters", Toast.LENGTH_SHORT
+                        ).show()
+
+                    } else if (password != passConfirm) {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Password must be the same", Toast.LENGTH_SHORT
+                        ).show()
+
+                    } else {
+                        viewModel.saveUser(login, password)
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    }
+                }
             }
         }
     }

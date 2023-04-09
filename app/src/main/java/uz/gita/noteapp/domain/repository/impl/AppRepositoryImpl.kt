@@ -65,4 +65,13 @@ class AppRepositoryImpl private constructor() : AppRepository {
     override fun isExistUser(): Boolean {
         return myBase.Login.isNotEmpty()
     }
+
+    override fun saveUser(login: String, password: String) {
+        myBase.Login = login
+        myBase.Password = password
+    }
+
+    override fun getSearchedNote(note: String): LiveData<List<NoteData>> {
+        return noteDao.searchNote(note)
+    }
 }
