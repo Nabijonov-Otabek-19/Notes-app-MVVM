@@ -38,7 +38,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             addNoteBtn.setOnClickListener {
                 viewModel.openAddNoteScreen()
             }
-
             recyclerHome.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         }
 

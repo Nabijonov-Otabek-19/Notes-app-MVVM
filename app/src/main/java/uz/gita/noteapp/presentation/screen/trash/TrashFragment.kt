@@ -9,6 +9,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import uz.gita.noteapp.R
 import uz.gita.noteapp.databinding.FragmentTrashBinding
@@ -51,7 +52,8 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
         }
 
         binding.apply {
-            recyclerTrash.layoutManager = LinearLayoutManager(requireActivity())
+            recyclerTrash.layoutManager =
+                StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         }
 
         viewModel.notesTrashLiveData.observe(viewLifecycleOwner) {

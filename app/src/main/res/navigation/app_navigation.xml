@@ -17,11 +17,13 @@
             android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/trashFragment"
         android:name="uz.gita.noteapp.presentation.screen.trash.TrashFragment"
         android:label="Trash bin"
         tools:layout="@layout/fragment_trash" />
+
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="uz.gita.noteapp.presentation.screen.add.AddNoteFragment"

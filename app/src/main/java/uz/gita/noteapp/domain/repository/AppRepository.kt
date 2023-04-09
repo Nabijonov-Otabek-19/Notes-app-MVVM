@@ -22,4 +22,6 @@ interface AppRepository {
     fun recoverNote(noteId: Long)
 
     fun deleteAllNotesInTrash()
+
+    fun isExistUser(): Boolean
 }
