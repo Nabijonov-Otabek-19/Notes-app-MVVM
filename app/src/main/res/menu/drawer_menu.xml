@@ -10,9 +10,4 @@
         android:title="Trash"
         app:showAsAction="withText" />
 
-    <item
-        android:id="@+id/logOut"
-        android:icon="@drawable/ic_logout"
-        android:title="Log out"
-        app:showAsAction="withText" />
 </menu>

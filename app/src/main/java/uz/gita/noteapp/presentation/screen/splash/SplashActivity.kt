@@ -8,14 +8,10 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import uz.gita.noteapp.MainActivity
 import uz.gita.noteapp.databinding.ActivitySplashBinding
-import uz.gita.noteapp.presentation.screen.login.LoginActivity
-import uz.gita.noteapp.presentation.screen.splash.viewmodel.SplashViewModel
-import uz.gita.noteapp.presentation.screen.splash.viewmodel.impl.SplashViewModelImpl
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: SplashViewModel
     private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,18 +21,10 @@ class SplashActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        viewModel = SplashViewModelImpl()
-
         val time = 1500L
 
         Handler(Looper.getMainLooper()).postDelayed({
-
-            if (viewModel.isExistUser()) {
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-
-            } else {
-                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
-            }
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
         }, time)
     }
 
