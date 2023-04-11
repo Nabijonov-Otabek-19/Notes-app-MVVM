@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F8B5B5"
+        android:foreground="?selectableItemBackground"
         android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
