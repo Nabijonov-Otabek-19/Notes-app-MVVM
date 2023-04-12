@@ -5,7 +5,19 @@
     tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/trashScreen"
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_search"
+        android:title="Notes"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/archiveFragment"
+        android:icon="@drawable/ic_archive"
+        android:title="Archive"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/trashFragment"
         android:icon="@drawable/ic_trash"
         android:title="Trash"
         app:showAsAction="withText" />

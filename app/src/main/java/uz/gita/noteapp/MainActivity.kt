@@ -25,20 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.navigationView.setupWithNavController(navController)
 
-        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.homeFragment, R.id.archiveFragment, R.id.trashFragment),
+            binding.drawerLayout
+        )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-
-        binding.navigationView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.trashScreen -> {
-                    navController.navigate(R.id.action_homeFragment_to_trashFragment)
-                }
-            }
-            binding.drawerLayout.closeDrawers()
-            true
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

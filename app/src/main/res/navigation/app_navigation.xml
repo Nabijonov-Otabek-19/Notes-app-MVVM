@@ -11,10 +11,7 @@
         android:label="Notes"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_trashFragment"
-            app:destination="@id/trashFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_addNoteFragment"
+            android:id="@+id/action_homeFragment_to_addNoteFragment2"
             app:destination="@id/addNoteFragment" />
     </fragment>
 
@@ -29,4 +26,11 @@
         android:name="uz.gita.noteapp.presentation.screen.add.AddNoteFragment"
         android:label="Add Note"
         tools:layout="@layout/fragment_add_note" />
+
+    <fragment
+        android:id="@+id/archiveFragment"
+        android:name="uz.gita.noteapp.presentation.screen.archive.ArchiveFragment"
+        android:label="Archived Notes"
+        tools:layout="@layout/fragment_archive" />
+
 </navigation>
