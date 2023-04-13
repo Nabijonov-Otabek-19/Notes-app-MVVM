@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/bg_button"
+    android:backgroundTint="#E3F3FF"
+    android:elevation="8dp"
+    android:padding="16dp">
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:constraint_referenced_ids="dark_blue, pink,red,orange, yellow,green,blue,light_pink"
+        app:flow_horizontalBias="0"
+        app:flow_horizontalGap="10dp"
+        app:flow_horizontalStyle="packed"
+        app:flow_maxElementsWrap="4"
+        app:flow_verticalBias="0"
+        app:flow_verticalGap="8dp"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dark_blue"
+        android:layout_width="50dp"
+        android:foreground="?selectableItemBackground"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/dark_blue"
+        app:cardCornerRadius="200dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pink"
+        android:layout_width="50dp"
+        android:foreground="?selectableItemBackground"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/dark_pink"
+        app:cardCornerRadius="200dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/red"
+        android:layout_width="50dp"
+        android:foreground="?selectableItemBackground"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/red"
+        app:cardCornerRadius="200dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/orange"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/orange"
+        app:cardCornerRadius="200dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/yellow"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/yellow"
+        app:cardCornerRadius="200dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/green"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/green"
+        app:cardCornerRadius="200dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/blue"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="200dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/light_pink"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/light_pink"
+        app:cardCornerRadius="200dp"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
