@@ -88,6 +88,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private val openAddNoteObserver = Observer<Unit> {
-        findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment2)
+        val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment2(null)
+        findNavController().navigate(action)
     }
 }

@@ -1,5 +1,6 @@
 package uz.gita.noteapp.presentation.screen.add
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -17,6 +18,8 @@ import uz.gita.noteapp.data.source.local.converter.DateConverter
 import uz.gita.noteapp.databinding.FragmentAddNoteBinding
 import uz.gita.noteapp.presentation.screen.add.viewmodel.AddNoteViewModel
 import uz.gita.noteapp.presentation.screen.add.viewmodel.impl.AddNoteViewModelImpl
+import vadiole.colorpicker.ColorModel
+import vadiole.colorpicker.ColorPickerDialog
 
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
@@ -37,6 +40,12 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 edtContent.setText(args.noteData!!.content)
             }
             updateNoteId = args.noteData!!.id
+        }
+
+        binding.apply {
+            colorPicker.setOnClickListener {
+                showColorPicker()
+            }
         }
 
         requireActivity().addMenuProvider(object : MenuProvider {
@@ -69,5 +78,20 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 }
             }
         }, viewLifecycleOwner)
+    }
+
+    private fun showColorPicker() {
+        val colorPicker: ColorPickerDialog = ColorPickerDialog.Builder()
+            .setInitialColor(Color.WHITE)
+            .setColorModel(ColorModel.HSV)
+            .setColorModelSwitchEnabled(true)
+            .setButtonOkText(android.R.string.ok)
+            .setButtonCancelText(android.R.string.cancel)
+            .onColorSelected { color: Int ->
+                binding.edtTitle.setTextColor(color)
+            }
+            .create()
+
+        colorPicker.show(childFragmentManager, "color_picker")
     }
 }

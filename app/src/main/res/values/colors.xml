@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="background">#262A56</color>
+    <color name="background">#fff</color>
 
     <color name="red">#D14D72</color>
     <color name="light_green">#87CBB9</color>
@@ -19,5 +19,6 @@
     <color name="dark_pink">#7149C6</color>
     <color name="green">#539165</color>
     <color name="dark_blue">#161B57</color>
+    <color name="gray">#3C3C3C</color>
 
 </resources>

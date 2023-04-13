@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.databinding.ItemNoteBinding
-import uz.gita.noteapp.utils.Colors
-import kotlin.random.Random
 
 class TrashAdapter : ListAdapter<NoteData, TrashAdapter.ItemHolder>(NoteCallback) {
 
@@ -29,10 +27,9 @@ class TrashAdapter : ListAdapter<NoteData, TrashAdapter.ItemHolder>(NoteCallback
         }
 
         fun bind() {
-            val random = Random.nextInt(0, 7)
             val item = getItem(adapterPosition)
             binding.apply {
-                itemNote.setBackgroundResource(Colors.colorList[random])
+                //cardview.strokeColor = ContextCompat.getColor(binding.root.context, R.color.gray)
                 txtTitle.text = item.title
                 txtContent.text = item.content
                 txtData.text = item.createdAt
