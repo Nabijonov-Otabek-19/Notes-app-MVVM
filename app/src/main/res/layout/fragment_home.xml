@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".presentation.screen.home.HomeFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/background"
         android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@id/recyclerHome"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,12 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="4dp"
-            android:background="@drawable/bg_edt"
+            android:background="@drawable/bg_edt_search"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="8dp"
             android:elevation="4dp"
+            android:textColor="@color/white"
             android:hint="Search Notes"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:textColorHint="@color/white" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -34,6 +38,9 @@
         android:id="@+id/recyclerHome"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear"
@@ -44,9 +51,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Not Found"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:text="There is any notes yet"
+        android:textColor="@color/white"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

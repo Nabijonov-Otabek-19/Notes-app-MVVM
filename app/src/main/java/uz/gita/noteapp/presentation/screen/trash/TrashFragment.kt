@@ -22,10 +22,7 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
     private val viewModel: TrashViewModel by viewModels<TrashViewModelImpl>()
     private val binding by viewBinding(FragmentTrashBinding::bind)
     private val adapter by lazy { TrashAdapter() }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var listCount = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -37,7 +34,7 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.clear_notes -> {
-                        viewModel.showDeleteAllDialog(requireActivity())
+                        if (listCount != 0) viewModel.showDeleteAllDialog(requireActivity())
                         true
                     }
                     else -> {
@@ -57,6 +54,7 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
         }
 
         viewModel.notesTrashLiveData.observe(viewLifecycleOwner) {
+            listCount = it.size
             adapter.submitList(it)
             binding.recyclerTrash.adapter = adapter
         }

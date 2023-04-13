@@ -1,12 +1,16 @@
 package uz.gita.noteapp.presentation.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import uz.gita.noteapp.R
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.databinding.ItemNoteBinding
+import uz.gita.noteapp.utils.Colors
+import kotlin.random.Random
 
 class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) {
 
@@ -27,11 +31,13 @@ class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) 
         }
 
         fun bind() {
+            val random: Int = Random.nextInt(0, 7)
             val item = getItem(adapterPosition)
             binding.apply {
+                itemNote.setBackgroundResource(Colors.colorList[random])
                 txtTitle.text = item.title
                 txtContent.text = item.content
-                txtData.text = item.createdAt.toString()
+                txtData.text = item.createdAt
             }
         }
     }

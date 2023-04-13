@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    android:gravity="center"
     android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -13,11 +13,11 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
-        android:text="Start Note"
-        android:textSize="20sp"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="Start Note"
         android:textColor="@color/black"
-        android:layout_height="wrap_content"/>
+        android:textSize="20sp" />
 
 
 </LinearLayout>
