@@ -11,14 +11,14 @@ interface NoteDao {
     @Insert
     fun addNote(note: NoteEntity)
 
-    @Update
-    fun updateNote(note: NoteEntity)
-
     @Delete
     fun deleteNote(note: NoteEntity)
 
     @Delete
     fun deleteNotes(vararg notes: NoteEntity)
+
+    @Query("UPDATE Notes Set title = :title, content = :content, created_at = :date WHERE id =:id")
+    fun updateNote(id: Long, title: String, content: String, date: String)
 
     @Query("SELECT * FROM Notes WHERE on_trash=0")
     fun getNotes(): LiveData<List<NoteData>>

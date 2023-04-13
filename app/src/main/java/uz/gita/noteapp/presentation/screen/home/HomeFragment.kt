@@ -35,6 +35,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModel.showDeleteDialog(requireActivity(), it.id)
         }
 
+        adapter.setOnItemClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment2(it)
+            findNavController().navigate(action)
+        }
+
         binding.apply {
             searchHome.doOnTextChanged { text, start, before, count ->
                 if (text.toString().isNotBlank()) {
@@ -84,10 +89,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val openAddNoteObserver = Observer<Unit> {
         findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment2)
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = HomeFragment()
     }
 }

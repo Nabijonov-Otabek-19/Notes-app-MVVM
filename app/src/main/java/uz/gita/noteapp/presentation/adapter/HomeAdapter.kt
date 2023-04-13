@@ -15,9 +15,14 @@ import kotlin.random.Random
 class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) {
 
     private var deleteLongClickListener: ((NoteData) -> Unit)? = null
+    private var onItemClickListener: ((NoteData) -> Unit)? = null
 
     fun setOnDeleteLongClickListener(l: (NoteData) -> Unit) {
         deleteLongClickListener = l
+    }
+
+    fun setOnItemClickListener(l: (NoteData) -> Unit) {
+        onItemClickListener = l
     }
 
     inner class ItemHolder(private val binding: ItemNoteBinding) :
@@ -27,6 +32,10 @@ class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) 
             binding.root.setOnLongClickListener {
                 deleteLongClickListener?.invoke(getItem(adapterPosition))
                 true
+            }
+
+            binding.root.setOnClickListener {
+                onItemClickListener?.invoke(getItem(adapterPosition))
             }
         }
 

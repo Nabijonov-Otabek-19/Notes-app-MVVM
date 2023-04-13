@@ -13,4 +13,8 @@ class AddNoteViewModelImpl : ViewModel(), AddNoteViewModel {
     override fun addNote(noteData: NoteData) {
         repository.addNote(noteData)
     }
+
+    override fun updateNote(id: Long, title: String, content: String, date: String) {
+        repository.updateNote(id, title, content, date)
+    }
 }

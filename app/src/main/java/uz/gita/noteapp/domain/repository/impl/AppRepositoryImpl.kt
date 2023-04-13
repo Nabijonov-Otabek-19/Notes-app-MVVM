@@ -26,8 +26,8 @@ class AppRepositoryImpl private constructor() : AppRepository {
         noteDao.addNote(note.toNoteEntity())
     }
 
-    override fun updateNote(note: NoteData) {
-        noteDao.updateNote(note.toNoteEntity())
+    override fun updateNote(id: Long, title: String, content: String, date: String) {
+        noteDao.updateNote(id, title, content, date)
     }
 
     override fun deleteNote(note: NoteData) {
