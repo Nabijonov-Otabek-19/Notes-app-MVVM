@@ -27,9 +27,9 @@
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="8dp"
             android:elevation="4dp"
-            android:textColor="@color/black"
             android:hint="Search Notes"
             android:padding="8dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/gray" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -46,14 +46,11 @@
         app:layout_constraintTop_toBottomOf="@id/linear"
         app:layout_constraintVertical_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtNotFound"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="There is any notes yet"
-        android:textColor="@color/gray"
-        android:textSize="28sp"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgNote"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_emptynote"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -45,10 +45,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 if (text.toString().isNotBlank()) {
 
                     viewModel.searchNote("%${text.toString()}%").observe(viewLifecycleOwner) {
-                        if (it.isNotEmpty()) binding.txtNotFound.visibility = View.INVISIBLE
+                        if (it.isNotEmpty()) binding.imgNote.visibility = View.INVISIBLE
                         else {
-                            binding.txtNotFound.visibility = View.VISIBLE
-                            binding.txtNotFound.text = "Not Found"
+                            binding.imgNote.visibility = View.VISIBLE
                         }
 
                         adapter.submitList(it)
@@ -56,10 +55,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     }
                 } else {
                     viewModel.notesLiveData.observe(viewLifecycleOwner) {
-                        if (it.isNotEmpty()) binding.txtNotFound.visibility = View.INVISIBLE
+                        if (it.isNotEmpty()) binding.imgNote.visibility = View.INVISIBLE
                         else {
-                            binding.txtNotFound.visibility = View.VISIBLE
-                            binding.txtNotFound.text = "There is not any Notes."
+                            binding.imgNote.visibility = View.VISIBLE
                         }
 
                         adapter.submitList(it)
@@ -76,10 +74,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel.notesLiveData.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) binding.txtNotFound.visibility = View.INVISIBLE
+            if (it.isNotEmpty()) binding.imgNote.visibility = View.INVISIBLE
             else {
-                binding.txtNotFound.visibility = View.VISIBLE
-                binding.txtNotFound.text = "There is not any Notes."
+                binding.imgNote.visibility = View.VISIBLE
             }
 
             adapter.submitList(it)

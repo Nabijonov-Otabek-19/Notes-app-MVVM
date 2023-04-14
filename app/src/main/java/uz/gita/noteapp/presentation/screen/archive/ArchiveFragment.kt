@@ -32,8 +32,8 @@ class ArchiveFragment : Fragment(R.layout.fragment_archive) {
         }
 
         viewModel.notesArchivedLiveData.observe(viewLifecycleOwner) {
-            if (it.isEmpty()) binding.txtTitle.visibility = View.VISIBLE
-            else binding.txtTitle.visibility = View.INVISIBLE
+            if (it.isEmpty()) binding.imgArchive.visibility = View.VISIBLE
+            else binding.imgArchive.visibility = View.INVISIBLE
 
             adapter.submitList(it)
             binding.recyclerArchive.adapter = adapter

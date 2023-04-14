@@ -56,8 +56,8 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
         viewModel.notesTrashLiveData.observe(viewLifecycleOwner) {
             listCount = it.size
 
-            if (listCount == 0) binding.txtTitle.visibility = View.VISIBLE
-            else binding.txtTitle.visibility = View.INVISIBLE
+            if (listCount == 0) binding.imgBin.visibility = View.VISIBLE
+            else binding.imgBin.visibility = View.INVISIBLE
 
             adapter.submitList(it)
             binding.recyclerTrash.adapter = adapter

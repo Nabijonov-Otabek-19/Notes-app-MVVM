@@ -71,7 +71,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_search"
+            android:src="@drawable/ic_archive"
             android:tint="@color/black" />
 
         <TextView
