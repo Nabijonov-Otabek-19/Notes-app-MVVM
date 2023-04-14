@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="There is any notes yet"
-        android:textColor="@color/white"
+        android:textColor="@color/gray"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

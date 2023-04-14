@@ -29,7 +29,7 @@ class TrashAdapter : ListAdapter<NoteData, TrashAdapter.ItemHolder>(NoteCallback
         fun bind() {
             val item = getItem(adapterPosition)
             binding.apply {
-                //cardview.strokeColor = ContextCompat.getColor(binding.root.context, R.color.gray)
+                itemNote.setBackgroundColor(item.color)
                 txtTitle.text = item.title
                 txtContent.text = item.content
                 txtData.text = item.createdAt

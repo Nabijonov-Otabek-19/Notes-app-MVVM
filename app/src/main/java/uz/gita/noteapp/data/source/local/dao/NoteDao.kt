@@ -20,6 +20,9 @@ interface NoteDao {
     @Query("UPDATE Notes Set title = :title, content = :content, created_at = :date WHERE id =:id")
     fun updateNote(id: Long, title: String, content: String, date: String)
 
+    @Query("UPDATE Notes set color = :color WHERE id = :noteID")
+    fun changeColorNote(noteID: Long, color: Int)
+
     @Query("SELECT * FROM Notes WHERE on_trash=0")
     fun getNotes(): LiveData<List<NoteData>>
 

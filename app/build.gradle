@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
-    id 'kotlin-parcelize'
 }
 
 android {
@@ -69,7 +68,4 @@ dependencies {
 
     // Fragment
     implementation 'androidx.fragment:fragment-ktx:1.5.6'
-
-    // ColorPicker
-    implementation 'io.github.vadiole:colorpicker:1.0.2'
 }

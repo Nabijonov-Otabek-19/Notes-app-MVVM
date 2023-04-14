@@ -1,18 +1,30 @@
 package uz.gita.noteapp.utils
 
+import android.annotation.SuppressLint
+import android.content.Context
+import androidx.core.content.ContextCompat
 import uz.gita.noteapp.R
 
-object Colors {
-    val colorList = ArrayList<Int>()
+class Colors(val context: Context) {
 
-    init {
-        colorList.add(R.color.green)
-        colorList.add(R.color.red)
-        colorList.add(R.color.light_green)
-        colorList.add(R.color.blue)
-        colorList.add(R.color.yellow)
-        colorList.add(R.color.orange)
-        colorList.add(R.color.light_pink)
-        colorList.add(R.color.dark_pink)
+    companion object {
+
+        @SuppressLint("StaticFieldLeak")
+        private lateinit var colorObj: Colors
+
+        fun getInstance(context: Context): Colors {
+            if (!(::colorObj.isInitialized)) {
+                colorObj = Colors(context)
+            }
+            return colorObj
+        }
     }
+
+    val dark_blue = ContextCompat.getColor(context, R.color.dark_blue)
+    val dark_pink = ContextCompat.getColor(context, R.color.dark_pink)
+    val orange = ContextCompat.getColor(context, R.color.orange)
+    val yellow = ContextCompat.getColor(context, R.color.yellow)
+    val green = ContextCompat.getColor(context, R.color.green)
+    val blue = ContextCompat.getColor(context, R.color.blue)
+    val light_pink = ContextCompat.getColor(context, R.color.light_pink)
 }

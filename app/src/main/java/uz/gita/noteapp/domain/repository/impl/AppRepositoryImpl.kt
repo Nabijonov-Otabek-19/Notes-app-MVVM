@@ -30,6 +30,10 @@ class AppRepositoryImpl private constructor() : AppRepository {
         noteDao.updateNote(id, title, content, date)
     }
 
+    override fun changeColorNote(id: Long, color: Int) {
+        noteDao.changeColorNote(id, color)
+    }
+
     override fun deleteNote(note: NoteData) {
         noteDao.deleteNote(note.toNoteEntity())
     }

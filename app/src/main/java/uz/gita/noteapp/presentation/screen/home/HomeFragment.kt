@@ -2,7 +2,6 @@ package uz.gita.noteapp.presentation.screen.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -33,8 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         adapter.setOnDeleteLongClickListener {
-            viewModel.showDeleteDialog(requireActivity(), it.id)
-            Toast.makeText(requireActivity(), "Note Deleted", Toast.LENGTH_SHORT).show()
+            viewModel.showBottomSheetDialog(requireActivity(), it.id)
         }
 
         adapter.setOnItemClickListener {

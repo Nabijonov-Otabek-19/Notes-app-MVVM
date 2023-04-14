@@ -18,8 +18,6 @@ import uz.gita.noteapp.data.source.local.converter.DateConverter
 import uz.gita.noteapp.databinding.FragmentAddNoteBinding
 import uz.gita.noteapp.presentation.screen.add.viewmodel.AddNoteViewModel
 import uz.gita.noteapp.presentation.screen.add.viewmodel.impl.AddNoteViewModelImpl
-import vadiole.colorpicker.ColorModel
-import vadiole.colorpicker.ColorPickerDialog
 
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
@@ -42,12 +40,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             updateNoteId = args.noteData!!.id
         }
 
-        binding.apply {
-            colorPicker.setOnClickListener {
-                showColorPicker()
-            }
-        }
-
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.add_menu, menu)
@@ -67,7 +59,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                             updateData = false
                         } else {
                             viewModel.addNote(
-                                NoteData(title = title, content = content, createdAt = time)
+                                NoteData(title = title, content = content, createdAt = time, color = Color.WHITE)
                             )
                             Toast.makeText(requireActivity(), "Note added", Toast.LENGTH_SHORT)
                                 .show()
@@ -78,20 +70,5 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 }
             }
         }, viewLifecycleOwner)
-    }
-
-    private fun showColorPicker() {
-        val colorPicker: ColorPickerDialog = ColorPickerDialog.Builder()
-            .setInitialColor(Color.WHITE)
-            .setColorModel(ColorModel.HSV)
-            .setColorModelSwitchEnabled(true)
-            .setButtonOkText(android.R.string.ok)
-            .setButtonCancelText(android.R.string.cancel)
-            .onColorSelected { color: Int ->
-                binding.edtTitle.setTextColor(color)
-            }
-            .create()
-
-        colorPicker.show(childFragmentManager, "color_picker")
     }
 }
