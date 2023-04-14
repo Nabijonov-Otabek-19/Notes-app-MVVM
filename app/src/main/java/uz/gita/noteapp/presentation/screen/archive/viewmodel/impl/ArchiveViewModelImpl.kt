@@ -1,59 +1,36 @@
-package uz.gita.noteapp.presentation.screen.home.viewmodel.impl
+package uz.gita.noteapp.presentation.screen.archive.viewmodel.impl
 
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import uz.gita.noteapp.R
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.domain.repository.AppRepository
 import uz.gita.noteapp.domain.repository.impl.AppRepositoryImpl
-import uz.gita.noteapp.presentation.screen.home.viewmodel.HomeViewModel
+import uz.gita.noteapp.presentation.screen.archive.viewmodel.ArchiveViewModel
 import uz.gita.noteapp.utils.Colors
 
-class HomeViewModelImpl : ViewModel(), HomeViewModel {
+class ArchiveViewModelImpl : ArchiveViewModel, ViewModel() {
+
     private val repository: AppRepository = AppRepositoryImpl.getInstance()
 
-    override val notesLiveData: LiveData<List<NoteData>>
-        get() = repository.getNotes()
-
-    override val openAddNoteScreenLiveData = MutableLiveData<Unit>()
-
-
-    override fun showDeleteDialog(context: Context, noteID: Long) {
-        val dialog = Dialog(context)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.custom_delete_dialog)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        val btnNo: AppCompatButton = dialog.findViewById(R.id.btnNo)
-        val btnYes: AppCompatButton = dialog.findViewById(R.id.btnYes)
-
-        btnNo.setOnClickListener { dialog.dismiss() }
-
-        btnYes.setOnClickListener {
-            repository.throwNoteToTrash(noteID)
-            dialog.dismiss()
-        }
-        dialog.create()
-        dialog.show()
-    }
+    override val notesArchivedLiveData: LiveData<List<NoteData>>
+        get() = repository.getArchivedNotes()
 
     override fun showBottomSheetDialog(context: Context, noteID: Long) {
         val dialog = BottomSheetDialog(context)
         dialog.setCancelable(false)
-        val view = dialog.layoutInflater.inflate(R.layout.home_bottomsheet_dialog, null)
+        val view = dialog.layoutInflater.inflate(R.layout.archive_bottomsheet_dialog, null)
 
         val btnLine = view.findViewById<LinearLayoutCompat>(R.id.line)
         val btnColor = view.findViewById<LinearLayoutCompat>(R.id.lineColor)
-        val btnArchive = view.findViewById<LinearLayoutCompat>(R.id.lineArchive)
+        val btnUnarchive = view.findViewById<LinearLayoutCompat>(R.id.lineArchive)
         val btnDelete = view.findViewById<LinearLayoutCompat>(R.id.lineDelete)
 
         btnLine.setOnClickListener {
@@ -65,8 +42,8 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
             dialog.dismiss()
         }
 
-        btnArchive.setOnClickListener {
-            repository.archiveNote(noteID)
+        btnUnarchive.setOnClickListener {
+            repository.removeArchivedNote(noteID)
             dialog.dismiss()
         }
 
@@ -138,13 +115,5 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
 
         dialog.create()
         dialog.show()
-    }
-
-    override fun openAddNoteScreen() {
-        openAddNoteScreenLiveData.value = Unit
-    }
-
-    override fun searchNote(note: String): LiveData<List<NoteData>> {
-        return repository.getSearchedNote(note)
     }
 }

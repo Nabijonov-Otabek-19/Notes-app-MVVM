@@ -20,7 +20,8 @@ class Colors(val context: Context) {
         }
     }
 
-    val dark_blue = ContextCompat.getColor(context, R.color.dark_blue)
+    val white = ContextCompat.getColor(context, R.color.white)
+    val red = ContextCompat.getColor(context, R.color.red)
     val dark_pink = ContextCompat.getColor(context, R.color.dark_pink)
     val orange = ContextCompat.getColor(context, R.color.orange)
     val yellow = ContextCompat.getColor(context, R.color.yellow)

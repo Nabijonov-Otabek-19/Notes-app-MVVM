@@ -17,10 +17,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="There is not any Archived"
+        android:text="Trash bin is empty"
         android:textColor="@color/gray"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

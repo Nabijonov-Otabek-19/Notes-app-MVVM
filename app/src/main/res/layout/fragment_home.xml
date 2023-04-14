@@ -27,10 +27,10 @@
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="8dp"
             android:elevation="4dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:hint="Search Notes"
             android:padding="8dp"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/gray" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

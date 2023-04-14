@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        app:constraint_referenced_ids="dark_blue, pink,red,orange, yellow,green,blue,light_pink"
+        app:constraint_referenced_ids="white, pink,red,orange, yellow,green,blue,light_pink"
         app:flow_horizontalBias="0"
         app:flow_horizontalGap="10dp"
         app:flow_horizontalStyle="packed"
@@ -31,11 +31,12 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/dark_blue"
+        android:id="@+id/white"
         android:layout_width="50dp"
         android:foreground="?selectableItemBackground"
         android:layout_height="50dp"
-        app:cardBackgroundColor="@color/dark_blue"
+
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="200dp" />
 
     <androidx.cardview.widget.CardView

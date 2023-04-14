@@ -23,13 +23,16 @@ interface NoteDao {
     @Query("UPDATE Notes set color = :color WHERE id = :noteID")
     fun changeColorNote(noteID: Long, color: Int)
 
-    @Query("SELECT * FROM Notes WHERE on_trash=0")
+    @Query("SELECT * FROM Notes WHERE on_trash=0 AND archived=0")
     fun getNotes(): LiveData<List<NoteData>>
+
+    @Query("SELECT * FROM Notes WHERE archived=1")
+    fun getArchivedNotes(): LiveData<List<NoteData>>
 
     @Query("SELECT * FROM Notes WHERE on_trash=1")
     fun getNotesInTrash(): LiveData<List<NoteData>>
 
-    @Query("UPDATE Notes set on_trash=1 WHERE id = :noteID")
+    @Query("UPDATE Notes set on_trash=1, archived=0 WHERE id = :noteID")
     fun throwNoteToTrash(noteID: Long)
 
     @Query("UPDATE Notes set on_trash=0 WHERE id = :noteID")
@@ -43,4 +46,10 @@ interface NoteDao {
 
     @Query("DELETE FROM Notes")
     fun deleteAllNotes()
+
+    @Query("UPDATE Notes set archived=1 WHERE id = :noteID")
+    fun archiveNote(noteID: Long)
+
+    @Query("UPDATE Notes set archived=0 WHERE id = :noteID")
+    fun removeArchivedNote(noteID: Long)
 }

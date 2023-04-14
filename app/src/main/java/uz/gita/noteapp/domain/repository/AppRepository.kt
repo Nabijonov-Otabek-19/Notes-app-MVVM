@@ -9,6 +9,10 @@ interface AppRepository {
 
     fun updateNote(id: Long, title: String, content: String, date: String)
 
+    fun archiveNote(id: Long)
+
+    fun removeArchivedNote(id: Long)
+
     fun changeColorNote(id: Long, color: Int)
 
     fun deleteNote(note: NoteData)
@@ -16,6 +20,8 @@ interface AppRepository {
     fun deleteNotes(vararg notes: NoteData)
 
     fun getNotes(): LiveData<List<NoteData>>
+
+    fun getArchivedNotes(): LiveData<List<NoteData>>
 
     fun getNotesInTrash(): LiveData<List<NoteData>>
 
@@ -26,8 +32,6 @@ interface AppRepository {
     fun deleteAllNotesInTrash()
 
     fun isExistUser(): Boolean
-
-    fun saveUser(login: String, password: String)
 
     fun getSearchedNote(note: String): LiveData<List<NoteData>>
 

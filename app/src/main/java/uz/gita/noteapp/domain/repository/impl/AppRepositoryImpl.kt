@@ -30,6 +30,14 @@ class AppRepositoryImpl private constructor() : AppRepository {
         noteDao.updateNote(id, title, content, date)
     }
 
+    override fun archiveNote(id: Long) {
+        noteDao.archiveNote(id)
+    }
+
+    override fun removeArchivedNote(id: Long) {
+        noteDao.removeArchivedNote(id)
+    }
+
     override fun changeColorNote(id: Long, color: Int) {
         noteDao.changeColorNote(id, color)
     }
@@ -50,6 +58,10 @@ class AppRepositoryImpl private constructor() : AppRepository {
         return noteDao.getNotes()
     }
 
+    override fun getArchivedNotes(): LiveData<List<NoteData>> {
+        return noteDao.getArchivedNotes()
+    }
+
     override fun getNotesInTrash(): LiveData<List<NoteData>> {
         return noteDao.getNotesInTrash()
     }
@@ -68,11 +80,6 @@ class AppRepositoryImpl private constructor() : AppRepository {
 
     override fun isExistUser(): Boolean {
         return myBase.Login.isNotEmpty()
-    }
-
-    override fun saveUser(login: String, password: String) {
-        myBase.Login = login
-        myBase.Password = password
     }
 
     override fun getSearchedNote(note: String): LiveData<List<NoteData>> {
