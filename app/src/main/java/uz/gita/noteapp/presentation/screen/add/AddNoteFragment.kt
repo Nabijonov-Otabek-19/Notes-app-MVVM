@@ -36,6 +36,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             binding.apply {
                 edtTitle.setText(args.noteData!!.title)
                 edtContent.setText(args.noteData!!.content)
+                updateData = args.type
             }
             updateNoteId = args.noteData!!.id
         }
@@ -52,17 +53,29 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                         val content = binding.edtContent.text.toString().trim()
                         val time = DateConverter.getCurrentTime()
 
-                        if (updateData) {
-                            viewModel.updateNote(updateNoteId, title, content, time)
-                            Toast.makeText(requireActivity(), "Note updated", Toast.LENGTH_SHORT)
-                                .show()
-                            updateData = false
-                        } else {
-                            viewModel.addNote(
-                                NoteData(title = title, content = content, createdAt = time, color = Color.WHITE)
-                            )
-                            Toast.makeText(requireActivity(), "Note added", Toast.LENGTH_SHORT)
-                                .show()
+                        if (title.isNotEmpty() && content.isNotEmpty()) {
+                            if (updateData) {
+                                viewModel.updateNote(updateNoteId, title, content, time)
+                                Toast.makeText(
+                                    requireActivity(),
+                                    "Note updated",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            } else if (!updateData) {
+                                viewModel.addNote(
+                                    NoteData(
+                                        title = title, content = content,
+                                        createdAt = time, color = Color.WHITE
+                                    )
+                                )
+                                Toast.makeText(requireActivity(), "Note added", Toast.LENGTH_SHORT)
+                                    .show()
+                                binding.apply {
+                                    edtTitle.setText("")
+                                    edtContent.setText("")
+                                }
+                            }
                         }
                         true
                     }

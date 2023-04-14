@@ -8,7 +8,7 @@ import uz.gita.noteapp.data.source.local.entity.NoteEntity
 @Dao
 interface NoteDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addNote(note: NoteEntity)
 
     @Delete
