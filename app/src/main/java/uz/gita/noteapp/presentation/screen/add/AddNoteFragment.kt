@@ -1,6 +1,5 @@
 package uz.gita.noteapp.presentation.screen.add
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -41,6 +40,12 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             updateNoteId = args.noteData!!.id
         }
 
+        binding.apply {
+            imgColor.setOnClickListener {
+                viewModel.showSetColorDialog(requireActivity())
+            }
+        }
+
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.add_menu, menu)
@@ -66,7 +71,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                                 viewModel.addNote(
                                     NoteData(
                                         title = title, content = content,
-                                        createdAt = time, color = Color.WHITE
+                                        createdAt = time, color = viewModel.getColor(), pinned = 0
                                     )
                                 )
                                 Toast.makeText(requireActivity(), "Note added", Toast.LENGTH_SHORT)

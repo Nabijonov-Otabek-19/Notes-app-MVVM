@@ -71,8 +71,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_archive"
-            android:tint="@color/black" />
+            android:src="@drawable/ic_archive2" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,9 +101,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:padding="3dp"
-            android:src="@drawable/ic_delete"
-            android:tint="@color/black" />
+            android:src="@drawable/ic_delete2" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"

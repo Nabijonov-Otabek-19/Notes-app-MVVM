@@ -13,6 +13,10 @@ interface AppRepository {
 
     fun removeArchivedNote(id: Long)
 
+    fun pinNote(noteId: Long)
+
+    fun unPinNote(noteId: Long)
+
     fun changeColorNote(id: Long, color: Int)
 
     fun deleteNote(note: NoteData)

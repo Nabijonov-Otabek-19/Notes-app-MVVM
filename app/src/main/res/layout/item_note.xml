@@ -19,9 +19,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Title"
@@ -29,9 +30,20 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/txtContent"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/imgPin"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPin"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_pin"
+            app:layout_constraintBottom_toBottomOf="@id/txtTitle"
+            app:layout_constraintLeft_toRightOf="@id/txtTitle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtTitle" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtContent"

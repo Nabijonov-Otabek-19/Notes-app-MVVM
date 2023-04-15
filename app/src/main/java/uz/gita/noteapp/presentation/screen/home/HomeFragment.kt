@@ -32,7 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         adapter.setOnDeleteLongClickListener {
-            viewModel.showBottomSheetDialog(requireActivity(), it.id)
+            viewModel.showBottomSheetDialog(requireActivity(), it.id, it.pinned)
         }
 
         adapter.setOnItemClickListener {

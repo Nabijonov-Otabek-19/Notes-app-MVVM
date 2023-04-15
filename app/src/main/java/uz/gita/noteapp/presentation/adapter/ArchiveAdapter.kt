@@ -1,6 +1,7 @@
 package uz.gita.noteapp.presentation.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -35,6 +36,7 @@ class ArchiveAdapter : ListAdapter<NoteData, ArchiveAdapter.ItemHolder>(NoteCall
                 txtTitle.showStrikeThrough(true)
                 txtContent.text = item.content
                 txtData.text = item.createdAt
+                imgPin.visibility = View.INVISIBLE
             }
         }
     }

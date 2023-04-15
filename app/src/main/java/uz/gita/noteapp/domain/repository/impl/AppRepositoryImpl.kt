@@ -38,6 +38,14 @@ class AppRepositoryImpl private constructor() : AppRepository {
         noteDao.removeArchivedNote(id)
     }
 
+    override fun pinNote(noteId: Long) {
+        noteDao.pinNote(noteId)
+    }
+
+    override fun unPinNote(noteId: Long) {
+        noteDao.unPinNote(noteId)
+    }
+
     override fun changeColorNote(id: Long, color: Int) {
         noteDao.changeColorNote(id, color)
     }

@@ -16,9 +16,10 @@ data class NoteEntity(
     @ColumnInfo(name = "on_trash")
     val onTrash: Int = 0,
     val archived: Int = 0,
+    val pinned: Int,
     val color: Int
 ) {
     fun toNoteData() = NoteData(
-        id, title, content, createdAt, onTrash, archived, color
+        id, title, content, createdAt, onTrash, archived, pinned, color
     )
 }

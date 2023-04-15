@@ -13,10 +13,11 @@ data class NoteData(
     @ColumnInfo(name = "on_trash")
     val onTrash: Int = 0,
     val archived: Int = 0,
+    val pinned: Int,
     val color: Int
 
 ) : java.io.Serializable {
     fun toNoteEntity(): NoteEntity = NoteEntity(
-        id, title, content, createdAt, onTrash, archived, color
+        id, title, content, createdAt, onTrash, archived, pinned, color
     )
 }

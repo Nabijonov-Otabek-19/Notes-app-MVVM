@@ -1,6 +1,7 @@
 package uz.gita.noteapp.presentation.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -33,6 +34,7 @@ class TrashAdapter : ListAdapter<NoteData, TrashAdapter.ItemHolder>(NoteCallback
                 txtTitle.text = item.title
                 txtContent.text = item.content
                 txtData.text = item.createdAt
+                imgPin.visibility = View.INVISIBLE
             }
         }
     }

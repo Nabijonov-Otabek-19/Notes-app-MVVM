@@ -9,9 +9,12 @@ interface HomeViewModel {
     val openAddNoteScreenLiveData: LiveData<Unit>
 
     fun showDeleteDialog(context: Context, noteID: Long)
-    fun showBottomSheetDialog(context: Context, noteID: Long)
+    fun showBottomSheetDialog(context: Context, noteID: Long, isPin: Int)
     fun showChangeColorDialog(context: Context, noteID: Long)
     fun openAddNoteScreen()
+
+    fun pinNote(noteID: Long)
+    fun unPinNote(noteID: Long)
 
     fun searchNote(note: String): LiveData<List<NoteData>>
 }

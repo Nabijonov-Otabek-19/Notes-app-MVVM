@@ -46,17 +46,24 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
         dialog.show()
     }
 
-    override fun showBottomSheetDialog(context: Context, noteID: Long) {
+    override fun showBottomSheetDialog(context: Context, noteID: Long, isPin: Int) {
         val dialog = BottomSheetDialog(context)
         dialog.setCancelable(false)
         val view = dialog.layoutInflater.inflate(R.layout.home_bottomsheet_dialog, null)
 
         val btnLine = view.findViewById<LinearLayoutCompat>(R.id.line)
+        val btnPin = view.findViewById<LinearLayoutCompat>(R.id.linePin)
         val btnColor = view.findViewById<LinearLayoutCompat>(R.id.lineColor)
         val btnArchive = view.findViewById<LinearLayoutCompat>(R.id.lineArchive)
         val btnDelete = view.findViewById<LinearLayoutCompat>(R.id.lineDelete)
 
         btnLine.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnPin.setOnClickListener {
+            if (isPin == 0) repository.pinNote(noteID)
+            else repository.unPinNote(noteID)
             dialog.dismiss()
         }
 
@@ -142,6 +149,14 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
 
     override fun openAddNoteScreen() {
         openAddNoteScreenLiveData.value = Unit
+    }
+
+    override fun pinNote(noteID: Long) {
+        repository.pinNote(noteID)
+    }
+
+    override fun unPinNote(noteID: Long) {
+        repository.unPinNote(noteID)
     }
 
     override fun searchNote(note: String): LiveData<List<NoteData>> {
