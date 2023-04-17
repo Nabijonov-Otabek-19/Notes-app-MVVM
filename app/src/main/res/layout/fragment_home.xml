@@ -7,34 +7,6 @@
     android:background="@color/background"
     tools:context=".presentation.screen.home.HomeFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        app:layout_constraintBottom_toTopOf="@id/recyclerHome"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/searchHome"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="4dp"
-            android:background="@drawable/bg_edt_search"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="8dp"
-            android:elevation="4dp"
-            android:hint="Search Notes"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gray" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHome"
         android:layout_width="match_parent"
@@ -44,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="1" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -55,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNoteBtn"

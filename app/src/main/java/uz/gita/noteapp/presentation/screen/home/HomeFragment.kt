@@ -1,8 +1,12 @@
 package uz.gita.noteapp.presentation.screen.home
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
-import androidx.core.widget.doOnTextChanged
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -25,6 +29,45 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        requireActivity().addMenuProvider(object : MenuProvider {
+
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.home_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.home_search -> {
+
+                        val searchItem = menuItem.actionView as SearchView
+                        searchItem.queryHint = "Search Notes"
+
+                        searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                            override fun onQueryTextSubmit(query: String?): Boolean {
+                                return false
+                            }
+
+                            override fun onQueryTextChange(newText: String?): Boolean {
+                                viewModel.searchNote("%${newText}%")
+                                    .observe(viewLifecycleOwner) {
+                                        if (it.isNotEmpty()) binding.imgNote.visibility =
+                                            View.INVISIBLE
+                                        else {
+                                            binding.imgNote.visibility = View.VISIBLE
+                                        }
+                                        adapter.submitList(it)
+                                        binding.recyclerHome.adapter = adapter
+                                    }
+                                return false
+                            }
+                        })
+                        true
+                    }
+                    else -> false
+                }
+            }
+        })
+
         viewModel.openAddNoteScreenLiveData.observe(this, openAddNoteObserver)
     }
 
@@ -41,31 +84,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         binding.apply {
-            searchHome.doOnTextChanged { text, start, before, count ->
-                if (text.toString().isNotBlank()) {
-
-                    viewModel.searchNote("%${text.toString()}%").observe(viewLifecycleOwner) {
-                        if (it.isNotEmpty()) binding.imgNote.visibility = View.INVISIBLE
-                        else {
-                            binding.imgNote.visibility = View.VISIBLE
-                        }
-
-                        adapter.submitList(it)
-                        recyclerHome.adapter = adapter
-                    }
-                } else {
-                    viewModel.notesLiveData.observe(viewLifecycleOwner) {
-                        if (it.isNotEmpty()) binding.imgNote.visibility = View.INVISIBLE
-                        else {
-                            binding.imgNote.visibility = View.VISIBLE
-                        }
-
-                        adapter.submitList(it)
-                        binding.recyclerHome.adapter = adapter
-                    }
-                }
-            }
-
             addNoteBtn.setOnClickListener {
                 viewModel.openAddNoteScreen()
             }
@@ -82,6 +100,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             adapter.submitList(it)
             binding.recyclerHome.adapter = adapter
         }
+
     }
 
     private val openAddNoteObserver = Observer<Unit> {
