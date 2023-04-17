@@ -67,7 +67,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
-                            } else if (!updateData) {
+                            } else {
                                 viewModel.addNote(
                                     NoteData(
                                         title = title, content = content,
