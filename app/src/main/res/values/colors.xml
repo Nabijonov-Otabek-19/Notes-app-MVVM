@@ -13,14 +13,14 @@
 
     <color name="background">#fff</color>
 
-    <color name="red">#DA708D</color>
+    <color name="red">#F4ACC0</color>
     <color name="redback">#D54A70</color>
-    <color name="light_green">#8BECD2</color>
-    <color name="blue">#57B8CA</color>
-    <color name="yellow">#EAD687</color>
-    <color name="orange">#DAA469</color>
-    <color name="light_pink">#B2A4FF</color>
-    <color name="dark_pink">#A078F3</color>
-    <color name="green">#70EF95</color>
+    <color name="light_green">#9BEAD5</color>
+    <color name="blue">#7BCBDA</color>
+    <color name="yellow">#F6E8AF</color>
+    <color name="orange">#F4C490</color>
+    <color name="light_pink">#C1B7F8</color>
+    <color name="dark_pink">#AF8EF4</color>
+    <color name="green">#89F1A7</color>
 
 </resources>
