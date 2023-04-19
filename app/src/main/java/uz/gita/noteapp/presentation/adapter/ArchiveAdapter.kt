@@ -1,9 +1,11 @@
 package uz.gita.noteapp.presentation.adapter
 
 import android.graphics.Color
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -35,8 +37,10 @@ class ArchiveAdapter : ListAdapter<NoteData, ArchiveAdapter.ItemHolder>(NoteCall
                 itemNote.setBackgroundColor(item.color)
                 txtTitle.text = item.title
                 txtTitle.showStrikeThrough(true)
-                txtContent.html = item.content
-                txtContent.setBackgroundColor(Color.TRANSPARENT)
+
+                txtContent.text = item.content.parseAsHtml()
+                txtContent.gravity = Gravity.START
+
                 txtData.text = item.createdAt
                 imgPin.visibility = View.INVISIBLE
             }

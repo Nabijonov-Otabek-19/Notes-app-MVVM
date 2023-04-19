@@ -1,9 +1,12 @@
 package uz.gita.noteapp.presentation.adapter
 
 import android.graphics.Color
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -43,10 +46,10 @@ class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) 
             binding.apply {
                 itemNote.setBackgroundColor(item.color)
                 txtTitle.text = item.title
-                txtContent.html = item.content
-                txtContent.setBackgroundColor(Color.TRANSPARENT)
-
                 txtData.text = item.createdAt
+
+                txtContent.text = item.content.parseAsHtml()
+                txtContent.gravity = Gravity.START
 
                 if (item.pinned == 0) imgPin.visibility = View.INVISIBLE
                 else imgPin.visibility = View.VISIBLE
