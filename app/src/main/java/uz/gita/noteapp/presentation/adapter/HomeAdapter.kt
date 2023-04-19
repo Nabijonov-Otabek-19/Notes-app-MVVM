@@ -1,5 +1,6 @@
 package uz.gita.noteapp.presentation.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) 
         ViewHolder(binding.root) {
 
         init {
+
             binding.root.setOnLongClickListener {
                 deleteLongClickListener?.invoke(getItem(adapterPosition))
                 true
@@ -41,7 +43,9 @@ class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) 
             binding.apply {
                 itemNote.setBackgroundColor(item.color)
                 txtTitle.text = item.title
-                txtContent.text = item.content
+                txtContent.html = item.content
+                txtContent.setBackgroundColor(Color.TRANSPARENT)
+
                 txtData.text = item.createdAt
 
                 if (item.pinned == 0) imgPin.visibility = View.INVISIBLE

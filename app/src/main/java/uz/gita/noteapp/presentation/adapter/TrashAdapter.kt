@@ -1,5 +1,6 @@
 package uz.gita.noteapp.presentation.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +33,8 @@ class TrashAdapter : ListAdapter<NoteData, TrashAdapter.ItemHolder>(NoteCallback
             binding.apply {
                 itemNote.setBackgroundColor(item.color)
                 txtTitle.text = item.title
-                txtContent.text = item.content
+                txtContent.html = item.content
+                txtContent.setBackgroundColor(Color.TRANSPARENT)
                 txtData.text = item.createdAt
                 imgPin.visibility = View.INVISIBLE
             }

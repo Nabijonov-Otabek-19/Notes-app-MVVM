@@ -1,5 +1,6 @@
 package uz.gita.noteapp.presentation.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +35,8 @@ class ArchiveAdapter : ListAdapter<NoteData, ArchiveAdapter.ItemHolder>(NoteCall
                 itemNote.setBackgroundColor(item.color)
                 txtTitle.text = item.title
                 txtTitle.showStrikeThrough(true)
-                txtContent.text = item.content
+                txtContent.html = item.content
+                txtContent.setBackgroundColor(Color.TRANSPARENT)
                 txtData.text = item.createdAt
                 imgPin.visibility = View.INVISIBLE
             }
