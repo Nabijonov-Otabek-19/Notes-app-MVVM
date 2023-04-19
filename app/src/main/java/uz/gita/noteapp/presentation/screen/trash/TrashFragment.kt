@@ -28,6 +28,7 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
 
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menu.clear()
                 menuInflater.inflate(R.menu.trash_menu, menu)
             }
 
