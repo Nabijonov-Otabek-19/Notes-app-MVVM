@@ -24,14 +24,48 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModels<HomeViewModelImpl>()
     private val binding by viewBinding(FragmentHomeBinding::bind)
-    private val adapter by lazy { HomeAdapter() }
+    private val adapter by lazy { HomeAdapter(requireActivity()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        viewModel.openAddNoteScreenLiveData.observe(this, openAddNoteObserver)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        adapter.setOnDeleteLongClickListener {
+            viewModel.showBottomSheetDialog(requireActivity(), it.id, it.pinned)
+        }
+
+        adapter.setOnItemClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment2(it, true)
+            findNavController().navigate(action)
+        }
+
+        binding.apply {
+            addNoteBtn.setOnClickListener {
+                viewModel.openAddNoteScreen()
+            }
+
+            recyclerHome.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        }
+
+        viewModel.notesLiveData.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) binding.imgNote.visibility = View.INVISIBLE
+            else {
+                binding.imgNote.visibility = View.VISIBLE
+            }
+
+            adapter.submitList(it)
+            binding.recyclerHome.adapter = adapter
+        }
+
         requireActivity().addMenuProvider(object : MenuProvider {
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menu.clear()
                 menuInflater.inflate(R.menu.home_menu, menu)
             }
 
@@ -67,40 +101,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         })
-
-        viewModel.openAddNoteScreenLiveData.observe(this, openAddNoteObserver)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        adapter.setOnDeleteLongClickListener {
-            viewModel.showBottomSheetDialog(requireActivity(), it.id, it.pinned)
-        }
-
-        adapter.setOnItemClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment2(it, true)
-            findNavController().navigate(action)
-        }
-
-        binding.apply {
-            addNoteBtn.setOnClickListener {
-                viewModel.openAddNoteScreen()
-            }
-
-            recyclerHome.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        }
-
-        viewModel.notesLiveData.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) binding.imgNote.visibility = View.INVISIBLE
-            else {
-                binding.imgNote.visibility = View.VISIBLE
-            }
-
-            adapter.submitList(it)
-            binding.recyclerHome.adapter = adapter
-        }
-
     }
 
     private val openAddNoteObserver = Observer<Unit> {

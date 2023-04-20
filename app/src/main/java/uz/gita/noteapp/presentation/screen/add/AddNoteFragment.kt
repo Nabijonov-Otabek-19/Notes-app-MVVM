@@ -1,11 +1,19 @@
 package uz.gita.noteapp.presentation.screen.add
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.RippleDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColor
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,6 +38,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     private var updateData = false
     private var updateNoteId: Long = 0
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         editor = binding.richEditor
@@ -100,102 +109,187 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         }, viewLifecycleOwner)
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     private fun clickEvents() {
         binding.apply {
             actionBold.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setBold()
             }
 
             actionItalic.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setItalic()
             }
 
             actionSubscript.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setSubscript()
             }
 
             actionSuperscript.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setSuperscript()
             }
 
             actionHeading1.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setHeading(1)
             }
 
             actionHeading2.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setHeading(2)
             }
 
             actionHeading3.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setHeading(3)
             }
 
             actionHeading4.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setHeading(4)
             }
 
             actionHeading5.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setHeading(5)
             }
 
             actionHeading6.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setHeading(6)
             }
 
-            actionTxtColor.setOnClickListener {
-                Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
-            }
-
-            actionBgColor.setOnClickListener {
-                Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
-            }
-
             actionIndent.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setIndent()
             }
 
             actionOutdent.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setOutdent()
             }
 
             actionUnderline.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setUnderline()
             }
 
             actionStrikethrough.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setStrikeThrough()
             }
 
             actionAlignLeft.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setAlignLeft()
             }
 
             actionAlignCenter.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setAlignCenter()
             }
 
             actionAlignRight.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setAlignRight()
             }
 
             actionBlockquote.setOnClickListener {
+                val color = (it.background as ColorDrawable).color
+                if (color == ContextCompat.getColor(requireContext(), R.color.blue)) {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.redback))
+                } else {
+                    it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
                 editor.setBullets()
-            }
-
-            actionInsertNumbers.setOnClickListener {
-                editor.setNumbers()
-            }
-
-            actionInsertImage.setOnClickListener {
-                Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
-            }
-
-            actionInsertLink.setOnClickListener {
-                Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
-            }
-
-            actionInsertCheckbox.setOnClickListener {
-                editor.insertTodo()
             }
         }
     }

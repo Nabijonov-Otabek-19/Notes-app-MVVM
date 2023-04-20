@@ -8,6 +8,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import uz.gita.noteapp.MainActivity
 import uz.gita.noteapp.databinding.ActivitySplashBinding
+import uz.gita.noteapp.utils.typeWrite
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -20,6 +21,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        binding.apply {
+            txt.typeWrite(this@SplashActivity, "Start Note", 35L)
+        }
 
         val time = 1500L
 

@@ -12,6 +12,7 @@
     <color name="colorPrimary">#008577</color>
 
     <color name="background">#fff</color>
+    <color name="background_primary">#120E43</color>
 
     <color name="red">#F4ACC0</color>
     <color name="redback">#D54A70</color>

@@ -1,19 +1,19 @@
 package uz.gita.noteapp.presentation.adapter
 
-import android.graphics.Color
-import android.view.Gravity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
+import android.view.animation.AnimationUtils
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import uz.gita.noteapp.R
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.databinding.ItemNoteBinding
 
-class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) {
+class HomeAdapter(private val context: Context) : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) {
 
     private var deleteLongClickListener: ((NoteData) -> Unit)? = null
     private var onItemClickListener: ((NoteData) -> Unit)? = null
@@ -47,9 +47,9 @@ class HomeAdapter : ListAdapter<NoteData, HomeAdapter.ItemHolder>(NoteCallback) 
                 itemNote.setBackgroundColor(item.color)
                 txtTitle.text = item.title
                 txtData.text = item.createdAt
+                txtData.startAnimation(AnimationUtils.loadAnimation(context, R.anim.textview_anim))
 
                 txtContent.text = item.content.parseAsHtml()
-                txtContent.gravity = Gravity.START
 
                 if (item.pinned == 0) imgPin.visibility = View.INVISIBLE
                 else imgPin.visibility = View.VISIBLE
