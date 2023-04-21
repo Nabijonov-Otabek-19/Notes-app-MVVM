@@ -11,7 +11,7 @@
         android:label="My Notes"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_addNoteFragment2"
+            android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
     </fragment>
 
@@ -34,7 +34,6 @@
         <argument
             android:name="type"
             app:argType="boolean" />
-
 
     </fragment>
 

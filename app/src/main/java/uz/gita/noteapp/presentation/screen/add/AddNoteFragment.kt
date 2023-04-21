@@ -1,9 +1,6 @@
 package uz.gita.noteapp.presentation.screen.add
 
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.RippleDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -13,7 +10,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColor
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -73,22 +69,22 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 return when (menuItem.itemId) {
                     R.id.add_note -> {
                         val title = binding.edtTitle.text.toString().trim()
-                        val content = binding.richEditor.html.toString().trim()
+                        val content = binding.richEditor.html
                         val time = DateConverter.getCurrentTime()
 
-                        if (title.isNotEmpty() && content.isNotEmpty()) {
+                        if (title.isNotEmpty() && content != null) {
                             if (updateData) {
-                                viewModel.updateNote(updateNoteId, title, content, time)
+                                viewModel.updateNote(updateNoteId, title, content.trim(), time)
                                 Toast.makeText(
                                     requireActivity(),
                                     "Note updated",
                                     Toast.LENGTH_SHORT
-                                )
-                                    .show()
+                                ).show()
+
                             } else {
                                 viewModel.addNote(
                                     NoteData(
-                                        title = title, content = content,
+                                        title = title, content = content.trim(),
                                         createdAt = time, color = viewModel.getColor(), pinned = 0
                                     )
                                 )
@@ -100,9 +96,15 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                                 }
                             }
                         }
+                        else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Fill the blank",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                         true
                     }
-
                     else -> false
                 }
             }

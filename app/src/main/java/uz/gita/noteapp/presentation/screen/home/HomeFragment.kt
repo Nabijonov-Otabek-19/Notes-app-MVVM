@@ -40,7 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         adapter.setOnItemClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment2(it, true)
+            val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(it, true)
             findNavController().navigate(action)
         }
 
@@ -104,7 +104,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private val openAddNoteObserver = Observer<Unit> {
-        val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment2(null, false)
+        val action = HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(null, false)
         findNavController().navigate(action)
     }
 }
