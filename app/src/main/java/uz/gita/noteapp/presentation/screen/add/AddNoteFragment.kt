@@ -8,11 +8,13 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import jp.wasabeef.richeditor.RichEditor
@@ -80,7 +82,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                                     "Note updated",
                                     Toast.LENGTH_SHORT
                                 ).show()
-
                             } else {
                                 viewModel.addNote(
                                     NoteData(
@@ -95,8 +96,8 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                                     richEditor.html = ""
                                 }
                             }
-                        }
-                        else {
+                            findNavController().navigate(R.id.action_addNoteFragment_to_homeFragment)
+                        } else {
                             Toast.makeText(
                                 requireContext(),
                                 "Fill the blank",
@@ -105,10 +106,19 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                         }
                         true
                     }
+
                     else -> false
                 }
             }
         }, viewLifecycleOwner)
+
+        val callback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_addNoteFragment_to_homeFragment)
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
