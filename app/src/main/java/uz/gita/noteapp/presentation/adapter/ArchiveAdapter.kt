@@ -1,20 +1,17 @@
 package uz.gita.noteapp.presentation.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import uz.gita.noteapp.R
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.databinding.ItemNoteBinding
 import uz.gita.noteapp.utils.showStrikeThrough
 
-class ArchiveAdapter(private val context: Context) :
+class ArchiveAdapter :
     ListAdapter<NoteData, ArchiveAdapter.ItemHolder>(NoteCallback) {
 
     private var deleteLongClickListener: ((NoteData) -> Unit)? = null
@@ -40,10 +37,9 @@ class ArchiveAdapter(private val context: Context) :
                 txtTitle.text = item.title
                 txtTitle.showStrikeThrough(true)
 
-                txtContent.text = item.content.parseAsHtml()
+                txtContent.text = item.content.parseAsHtml().trim()
 
                 txtData.text = item.createdAt
-                txtData.startAnimation(AnimationUtils.loadAnimation(context, R.anim.textview_anim))
                 imgPin.visibility = View.INVISIBLE
             }
         }

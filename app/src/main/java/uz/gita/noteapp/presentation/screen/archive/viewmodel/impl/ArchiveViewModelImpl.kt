@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.LiveData
@@ -43,11 +44,13 @@ class ArchiveViewModelImpl : ArchiveViewModel, ViewModel() {
         }
 
         btnUnarchive.setOnClickListener {
+            Toast.makeText(context, "Note moved to Notes", Toast.LENGTH_SHORT).show()
             repository.removeArchivedNote(noteID)
             dialog.dismiss()
         }
 
         btnDelete.setOnClickListener {
+            Toast.makeText(context, "Note moved to Bin", Toast.LENGTH_SHORT).show()
             repository.throwNoteToTrash(noteID)
             dialog.dismiss()
         }

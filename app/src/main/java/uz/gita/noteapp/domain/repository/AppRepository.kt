@@ -35,8 +35,6 @@ interface AppRepository {
 
     fun deleteAllNotesInTrash()
 
-    fun isExistUser(): Boolean
-
     fun getSearchedNote(note: String): LiveData<List<NoteData>>
 
     fun deleteAllNotes()

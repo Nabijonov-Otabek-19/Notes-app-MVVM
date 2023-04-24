@@ -21,7 +21,7 @@ class TrashFragment : Fragment(R.layout.fragment_trash) {
 
     private val viewModel: TrashViewModel by viewModels<TrashViewModelImpl>()
     private val binding by viewBinding(FragmentTrashBinding::bind)
-    private val adapter by lazy { TrashAdapter(requireContext()) }
+    private val adapter by lazy { TrashAdapter() }
     private var listCount = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

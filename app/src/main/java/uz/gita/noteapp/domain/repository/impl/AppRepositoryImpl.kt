@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import uz.gita.noteapp.data.model.NoteData
 import uz.gita.noteapp.data.source.local.NoteDatabase
 import uz.gita.noteapp.domain.repository.AppRepository
-import uz.gita.noteapp.domain.sharedpref.MyBase
 
 class AppRepositoryImpl private constructor() : AppRepository {
 
@@ -19,7 +18,6 @@ class AppRepositoryImpl private constructor() : AppRepository {
         }
     }
 
-    private val myBase = MyBase.getInstance()
     private val noteDao = NoteDatabase.getInstance().getNoteDao()
 
     override fun addNote(note: NoteData) {
@@ -84,10 +82,6 @@ class AppRepositoryImpl private constructor() : AppRepository {
 
     override fun deleteAllNotesInTrash() {
         noteDao.deleteAllNotesInTrash()
-    }
-
-    override fun isExistUser(): Boolean {
-        return myBase.Login.isNotEmpty()
     }
 
     override fun getSearchedNote(note: String): LiveData<List<NoteData>> {

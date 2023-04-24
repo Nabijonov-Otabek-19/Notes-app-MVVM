@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -32,6 +33,7 @@ class TrashViewModelImpl : ViewModel(), TrashViewModel {
         btnNo.setOnClickListener { dialog.dismiss() }
 
         btnYes.setOnClickListener {
+            Toast.makeText(context, "Note moved to Notes", Toast.LENGTH_SHORT).show()
             repository.recoverNote(noteID)
             dialog.dismiss()
         }
@@ -51,6 +53,7 @@ class TrashViewModelImpl : ViewModel(), TrashViewModel {
         btnNo.setOnClickListener { dialog.dismiss() }
 
         btnYes.setOnClickListener {
+            Toast.makeText(context, "Trash bin is empty now", Toast.LENGTH_SHORT).show()
             repository.deleteAllNotesInTrash()
             dialog.dismiss()
         }

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.cardview.widget.CardView
@@ -25,26 +26,6 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
         get() = repository.getNotes()
 
     override val openAddNoteScreenLiveData = MutableLiveData<Unit>()
-
-
-    override fun showDeleteDialog(context: Context, noteID: Long) {
-        val dialog = Dialog(context)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.custom_delete_dialog)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        val btnNo: AppCompatButton = dialog.findViewById(R.id.btnNo)
-        val btnYes: AppCompatButton = dialog.findViewById(R.id.btnYes)
-
-        btnNo.setOnClickListener { dialog.dismiss() }
-
-        btnYes.setOnClickListener {
-            repository.throwNoteToTrash(noteID)
-            dialog.dismiss()
-        }
-        dialog.create()
-        dialog.show()
-    }
 
     override fun showBottomSheetDialog(context: Context, noteID: Long, isPin: Int) {
         val dialog = BottomSheetDialog(context)
@@ -73,11 +54,13 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
         }
 
         btnArchive.setOnClickListener {
+            Toast.makeText(context, "Note moved to Archive", Toast.LENGTH_SHORT).show()
             repository.archiveNote(noteID)
             dialog.dismiss()
         }
 
         btnDelete.setOnClickListener {
+            Toast.makeText(context, "Note moved to Bin", Toast.LENGTH_SHORT).show()
             repository.throwNoteToTrash(noteID)
             dialog.dismiss()
         }

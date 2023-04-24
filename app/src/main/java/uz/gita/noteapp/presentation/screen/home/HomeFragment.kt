@@ -24,7 +24,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModels<HomeViewModelImpl>()
     private val binding by viewBinding(FragmentHomeBinding::bind)
-    private val adapter by lazy { HomeAdapter(requireActivity()) }
+    private val adapter by lazy { HomeAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,6 +97,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         })
                         true
                     }
+
                     else -> false
                 }
             }

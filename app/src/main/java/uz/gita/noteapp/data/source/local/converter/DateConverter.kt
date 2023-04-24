@@ -18,7 +18,7 @@ object DateConverter {
 
     fun getCurrentTime(): String {
         val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm")
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
         return current.format(formatter)
     }
 }

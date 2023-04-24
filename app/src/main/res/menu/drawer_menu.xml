@@ -19,7 +19,7 @@
     <item
         android:id="@+id/trashFragment"
         android:icon="@drawable/ic_trash"
-        android:title="Trash"
+        android:title="Trash bin"
         app:showAsAction="withText" />
 
 </menu>

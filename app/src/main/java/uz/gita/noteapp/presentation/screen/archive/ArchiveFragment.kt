@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.view.MenuProvider
-import androidx.core.view.children
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -22,7 +21,7 @@ class ArchiveFragment : Fragment(R.layout.fragment_archive) {
 
     private val viewModel: ArchiveViewModel by viewModels<ArchiveViewModelImpl>()
     private val binding by viewBinding(FragmentArchiveBinding::bind)
-    private val adapter by lazy { ArchiveAdapter(requireContext()) }
+    private val adapter by lazy { ArchiveAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
