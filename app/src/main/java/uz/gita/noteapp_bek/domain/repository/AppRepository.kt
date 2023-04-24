@@ -7,7 +7,7 @@ interface AppRepository {
 
     fun addNote(note: NoteData)
 
-    fun updateNote(id: Long, title: String, content: String, date: String)
+    fun updateNote(id: Long, title: String, content: String, color: Int, date: String)
 
     fun archiveNote(id: Long)
 

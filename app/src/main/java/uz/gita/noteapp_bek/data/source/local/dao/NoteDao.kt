@@ -17,8 +17,8 @@ interface NoteDao {
     @Delete
     fun deleteNotes(vararg notes: NoteEntity)
 
-    @Query("UPDATE Notes Set title = :title, content = :content, created_at = :date WHERE id =:id")
-    fun updateNote(id: Long, title: String, content: String, date: String)
+    @Query("UPDATE Notes Set title = :title, content = :content, color = :color, created_at = :date WHERE id =:id")
+    fun updateNote(id: Long, title: String, content: String, color: Int, date: String)
 
     @Query("UPDATE Notes set color = :color WHERE id = :noteID")
     fun changeColorNote(noteID: Long, color: Int)

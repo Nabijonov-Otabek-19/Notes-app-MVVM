@@ -23,8 +23,8 @@ class AddNoteViewModelImpl : ViewModel(), AddNoteViewModel {
         repository.addNote(noteData)
     }
 
-    override fun updateNote(id: Long, title: String, content: String, date: String) {
-        repository.updateNote(id, title, content, date)
+    override fun updateNote(id: Long, title: String, content: String, color: Int, date: String) {
+        repository.updateNote(id, title, content,color, date)
     }
 
     override fun showSetColorDialog(context: Context) {
