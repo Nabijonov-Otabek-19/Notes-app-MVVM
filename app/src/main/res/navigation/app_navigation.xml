@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="uz.gita.noteapp.presentation.screen.home.HomeFragment"
+        android:name="uz.gita.noteapp_bek.presentation.screen.home.HomeFragment"
         android:label="My Notes"
         tools:layout="@layout/fragment_home">
         <action
@@ -19,19 +19,19 @@
 
     <fragment
         android:id="@+id/trashFragment"
-        android:name="uz.gita.noteapp.presentation.screen.trash.TrashFragment"
+        android:name="uz.gita.noteapp_bek.presentation.screen.trash.TrashFragment"
         android:label="Trash bin"
         tools:layout="@layout/fragment_trash" />
 
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="uz.gita.noteapp.presentation.screen.add.AddNoteFragment"
+        android:name="uz.gita.noteapp_bek.presentation.screen.add.AddNoteFragment"
         android:label="Add Note"
         tools:layout="@layout/fragment_add_note">
 
         <argument
             android:name="noteData"
-            app:argType="uz.gita.noteapp.data.model.NoteData"
+            app:argType="uz.gita.noteapp_bek.data.model.NoteData"
             app:nullable="true" />
         <argument
             android:name="type"
@@ -46,7 +46,7 @@
 
     <fragment
         android:id="@+id/archiveFragment"
-        android:name="uz.gita.noteapp.presentation.screen.archive.ArchiveFragment"
+        android:name="uz.gita.noteapp_bek.presentation.screen.archive.ArchiveFragment"
         android:label="Archived Notes"
         tools:layout="@layout/fragment_archive" />
 

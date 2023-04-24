@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'uz.gita.noteapp'
+    namespace 'uz.gita.noteapp_bek'
     compileSdk 33
 
     defaultConfig {
-        applicationId "uz.gita.noteapp"
+        applicationId "uz.gita.noteapp_bek"
         minSdk 26
         targetSdk 33
         versionCode 1
