@@ -1,4 +1,4 @@
-# Notes-app-with-Room-MVVM
+# Notes-app-MVVM
 
 Screenshots :
 
