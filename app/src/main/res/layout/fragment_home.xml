@@ -38,8 +38,8 @@
         android:backgroundTint="@color/background_primary"
         android:clickable="true"
         android:src="@drawable/ic_add"
-        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
